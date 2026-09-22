@@ -1,70 +1,37 @@
-/* =====================================================
-   RESET
-===================================================== */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-
-    width: 100%;
-
-    background: #050009;
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    overflow-x: hidden;
-
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
-a {
-    text-decoration: none;
-}
-
-
-button {
-    font-family: inherit;
-}
 
 /* =====================================================
    NAVBAR
 ===================================================== */
 
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 114px;
-
     z-index: 9999;
-
-    box-sizing: border-box;
-
     display: flex;
     align-items: center;
-
-    /* Very transparent */
     background: rgba(0, 0, 0, 0.12);
-
-    /* Minimal blur */
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-
-    /* Very subtle bottom line */
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
@@ -75,17 +42,12 @@ button {
 
 .navbar-inner {
     width: 100%;
-    max-width: 1150px;
-
+    max-width: 1250px;
     height: 100%;
-
     margin: 0 auto;
-    padding: 0;
-
+    padding: 0 20px;
     display: flex;
     align-items: center;
-
-    box-sizing: border-box;
 }
 
 
@@ -96,21 +58,18 @@ button {
 .logo {
     display: flex;
     align-items: center;
-
     flex-shrink: 0;
 }
 
 .logo a {
     display: flex;
     align-items: center;
-
     text-decoration: none;
 }
 
 .logo img {
     width: 215px;
     height: auto;
-
     display: block;
 }
 
@@ -122,9 +81,7 @@ button {
 .desktop-nav {
     display: flex;
     align-items: center;
-
     gap: 4px;
-
     margin-left: auto;
 }
 
@@ -135,25 +92,17 @@ button {
 
 .nav-link {
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 10px 14px;
-
     color: #ffffff;
     text-decoration: none;
-
     font-size: 17px;
     font-weight: 600;
-
     white-space: nowrap;
-
     border-radius: 6px;
-
     background: transparent;
-
     transition:
         color 0.3s ease,
         background 0.3s ease,
@@ -161,33 +110,17 @@ button {
         transform 0.3s ease;
 }
 
-
-/* =====================================================
-   NAVIGATION HOVER
-===================================================== */
-
 .nav-link:hover {
     color: #ffffff;
-
     background: rgba(138, 74, 243, 0.12);
-
     text-shadow:
         0 0 10px rgba(138, 74, 243, 0.75);
-
     transform: translateY(-1px);
 }
 
-
-/* =====================================================
-   ACTIVE LINK
-===================================================== */
-
 .nav-link.active {
     color: #ffffff;
-
     background: transparent;
-
-    box-shadow: none;
 }
 
 
@@ -198,32 +131,19 @@ button {
 .start-btn {
     width: 116px;
     height: 36px;
-
     margin-left: 105px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    box-sizing: border-box;
-
     color: #ffffff;
-
     text-decoration: none;
-
     font-size: 16px;
     font-weight: 400;
-
     border: 1px solid #8a4af3;
-
     border-radius: 11px;
-
-    /* Transparent normally */
     background: rgba(138, 74, 243, 0.04);
-
     box-shadow:
         0 0 8px rgba(138, 74, 243, 0.10);
-
     transition:
         background 0.3s ease,
         box-shadow 0.3s ease,
@@ -231,36 +151,205 @@ button {
         border-color 0.3s ease;
 }
 
-
-/* =====================================================
-   START BUTTON HOVER
-===================================================== */
-
 .start-btn:hover {
     color: #ffffff;
-
-    /* Purple filled effect */
     background: #8a4af3;
-
     border-color: #9b62f5;
-
     box-shadow:
         0 0 12px rgba(138, 74, 243, 0.45),
         0 0 25px rgba(138, 74, 243, 0.25);
-
     transform: translateY(-2px);
+}
+
+.start-btn:active {
+    transform: translateY(0);
 }
 
 
 /* =====================================================
-   START BUTTON ACTIVE / CLICK
+   HERO
 ===================================================== */
 
-.start-btn:active {
-    transform: translateY(0);
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 850px;
+    overflow: hidden;
 
-    box-shadow:
-        0 0 8px rgba(138, 74, 243, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.18),
+            rgba(5, 0, 20, 0.35)
+        ),
+        url("assets/background.jpeg");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center center;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1100px;
+
+    margin-top: -50x;
+
+    padding: 0 30px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   HERO TITLE
+===================================================== */
+
+.hero h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 78px;
+    line-height: 1.08;
+    font-weight: 700;
+
+    text-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.55);
+}
+
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
+
+.hero p {
+    max-width: 700px;
+
+    margin: 32px auto 0;
+
+    color: #ffffff;
+
+    font-size: 21px;
+    line-height: 1.6;
+    font-weight: 600;
+
+    text-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.65);
+}
+
+
+/* =====================================================
+   HERO PLAY BUTTON
+===================================================== */
+
+.play-btn {
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+}
+
+.hero-play {
+    display: none;
+}
+
+
+/* =====================================================
+   COMMON SECTION
+===================================================== */
+
+.section {
+    padding: 100px 6%;
+    background: #050009;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-heading span {
+    display: block;
+    margin-bottom: 25px;
+    color: #aaa;
+    letter-spacing: 5px;
+    font-size: 18px;
+}
+
+.section-heading h2 {
+    font-size: 56px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   LOVE SECTION HEADING
+===================================================== */
+
+.left-heading {
+    text-align: center;
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products-section {
+    min-height: 100vh;
+    padding: 55px 20px 80px;
+    background:
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(0, 110, 145, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 100% 55%,
+            rgba(125, 0, 105, 0.25),
+            transparent 32%
+        ),
+        #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.products-section .section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.products-section .section-heading span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #cfcfcf;
+}
+
+.products-section .section-heading h2 {
+    margin: 0;
+    font-size: 44px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #fff;
 }
 
 
@@ -290,6 +379,14 @@ button {
     .start-btn {
         margin-left: 35px;
     }
+
+    .hero h1 {
+        font-size: 65px;
+    }
+
+    .hero p {
+        font-size: 19px;
+    }
 }
 
 
@@ -300,12 +397,7 @@ button {
 @media (max-width: 768px) {
 
     .navbar {
-        height: 85px;
-
-        background: rgba(0, 0, 0, 0.10);
-
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
+        height: 90px;
     }
 
     .navbar-inner {
@@ -322,60 +414,36 @@ button {
 
     .start-btn {
         width: 100px;
-        height: 34px;
-
-        margin-left: auto;
-
-        font-size: 15px;
-    }
-}
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .navbar {
-
-        height: 90px;
-    }
-
-
-    .navbar-inner {
-
-        padding:
-            0 20px;
-    }
-
-
-    .logo img {
-
-        width: 165px;
-    }
-
-
-    /* Hide desktop navigation */
-
-    .desktop-nav {
-
-        display: none;
-    }
-
-
-    /* Move Start button to right */
-
-    .start-btn {
-
-        width: 100px;
-
         height: 35px;
-
         margin-left: auto;
-
         font-size: 15px;
     }
 
+    .hero {
+        height: 100vh;
+        min-height: 700px;
+
+        background-size: cover;
+
+        background-position: center center;
+    }
+
+    .hero-content {
+        margin-top: 50px;
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        line-height: 1.1;
+    }
+
+    .hero p {
+        max-width: 600px;
+        margin-top: 25px;
+        font-size: 17px;
+        line-height: 1.5;
+    }
 }
 
 
@@ -386,35 +454,40 @@ button {
 @media (max-width: 400px) {
 
     .navbar {
-
         height: 80px;
     }
 
-
     .navbar-inner {
-
-        padding:
-            0 15px;
+        padding: 0 15px;
     }
 
-
     .logo img {
-
         width: 145px;
     }
 
-
     .start-btn {
-
         width: 85px;
-
         height: 32px;
-
         font-size: 14px;
     }
 
-}
+    .hero {
+        min-height: 650px;
+    }
 
+    .hero-content {
+        margin-top: 40px;
+        padding: 0 15px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+}
 /* =====================================================
    MOBILE
 ===================================================== */
