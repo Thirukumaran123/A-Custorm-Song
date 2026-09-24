@@ -269,7 +269,7 @@ body {
     opacity: 1;
 }
 
-.product-card img {
+.product-card img,video{
     position: relative;
     z-index: 1;
     width: 100%;
@@ -331,12 +331,22 @@ body {
     height: 450px;
     overflow: hidden;
     border-radius: 20px;
+    border: 2px solid whitesmoke;
+    transition: transform 1s
+}
+.love-card:hover{
+   border: 2px solid pink;
+   transform: scale(1.08);
 }
 
 .love-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 1s
+}
+.love-card img:hover{
+    transform: scale(1.05);
 }
 
 .love-card .play-btn {
@@ -347,6 +357,7 @@ body {
     height: 65px;
     transform: translate(-50%, -50%);
 }
+
 
 .magic-section {
     min-height: 100vh;

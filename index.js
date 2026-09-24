@@ -1,88 +1,66 @@
+const musicCards = document.querySelectorAll(".music-card");
 
-const navLinks = document.querySelectorAll(".nav-link");
-const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+musicCards.forEach(card => {
+    const audio = card.querySelector(".audio");
+    const playButton = card.querySelector(".music-play");
+    const prevButton = card.querySelector(".prev-btn");
+    const nextButton = card.querySelector(".next-btn");
+    const progress = card.querySelector(".progress");
+    const currentTime = card.querySelector(".current-time");
+    const duration = card.querySelector(".duration");
 
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.forEach(item => {
-            item.classList.remove("active");
-        });
+    playButton.addEventListener("click", () => {
+        musicCards.forEach(otherCard => {
+            const otherAudio = otherCard.querySelector(".audio");
+            const otherButton = otherCard.querySelector(".music-play");
 
-        link.classList.add("active");
-    });
-});
-
-mobileNavItems.forEach(item => {
-    item.addEventListener("click", () => {
-        mobileNavItems.forEach(nav => {
-            nav.classList.remove("active");
-        });
-
-        item.classList.add("active");
-    });
-});
-
-
-const faqQuestions = document.querySelectorAll(".faq-question");
-
-faqQuestions.forEach(question => {
-    question.addEventListener("click", () => {
-        const answer = question.nextElementSibling;
-        const icon = question.querySelector("span");
-
-        document.querySelectorAll(".faq-answer").forEach(item => {
-            if (item !== answer) {
-                item.style.maxHeight = null;
+            if (otherAudio !== audio) {
+                otherAudio.pause();
+                otherButton.textContent = "▶";
             }
         });
 
-        document.querySelectorAll(".faq-question span").forEach(item => {
-            if (item !== icon) {
-                item.textContent = "+";
-            }
-        });
-
-        if (answer.style.maxHeight) {
-            answer.style.maxHeight = null;
-            icon.textContent = "+";
+        if (audio.paused) {
+            audio.play();
+            playButton.textContent = "⏸";
         } else {
-            answer.style.maxHeight = answer.scrollHeight + "px";
-            icon.textContent = "−";
-        }
-    });
-});
-
-
-const playButtons = document.querySelectorAll(".play-btn, .music-play");
-
-playButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        button.classList.toggle("playing");
-    });
-});
-
-
-const sections = document.querySelectorAll("section[id]");
-
-window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
+            audio.pause();
+            playButton.textContent = "▶";
         }
     });
 
-    mobileNavItems.forEach(item => {
-        item.classList.remove("active");
+    audio.addEventListener("loadedmetadata", () => {
+        progress.max = audio.duration;
+        duration.textContent = formatTime(audio.duration);
+    });
 
-        const href = item.getAttribute("href");
+    audio.addEventListener("timeupdate", () => {
+        progress.value = audio.currentTime;
+        currentTime.textContent = formatTime(audio.currentTime);
+    });
 
-        if (href === "#" + current) {
-            item.classList.add("active");
-        }
+    progress.addEventListener("input", () => {
+        audio.currentTime = progress.value;
+    });
+
+    audio.addEventListener("ended", () => {
+        playButton.textContent = "▶";
+        progress.value = 0;
+        currentTime.textContent = "0:00";
+    });
+
+    prevButton.addEventListener("click", () => {
+        audio.currentTime = 0;
+    });
+
+    nextButton.addEventListener("click", () => {
+        audio.currentTime = audio.duration;
     });
 });
 
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+
+    return minutes + ":" + String(seconds).padStart(2, "0");
+}
