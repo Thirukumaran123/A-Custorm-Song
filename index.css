@@ -332,32 +332,147 @@ body {
     overflow: hidden;
     border-radius: 20px;
     border: 2px solid whitesmoke;
-    transition: transform 1s
+    transition: transform 0.5s ease, border 0.5s ease;
 }
-.love-card:hover{
-   border: 2px solid pink;
-   transform: scale(1.08);
+
+.love-card:hover {
+    border: 2px solid pink;
+    transform: scale(1.08);
 }
 
 .love-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 1s
+    display: block;
+    transition: transform 1s ease;
 }
-.love-card img:hover{
+
+.love-card:hover img {
     transform: scale(1.05);
 }
 
-.love-card .play-btn {
+.video-play-btn {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 70px;
     transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: 0.3s ease;
 }
 
+
+
+.video-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+    transition: 0.4s ease;
+}
+
+.video-modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.video-box {
+    position: relative;
+    width: 45%;
+    max-width: 550px;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.video-modal.show .video-box {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.video-box video {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    background: black;
+}
+
+.close-video {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: #e91e63;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 5;
+    transition: 0.3s ease;
+}
+
+.close-video:hover {
+    background: #c2185b;
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+
+    .video-box {
+        width: 85%;
+    }
+
+    .video-box video {
+        height: 650px;
+    }
+
+    .close-video {
+        top: -15px;
+        right: -10px;
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .love-card {
+        height: 350px;
+    }
+
+    .video-box {
+        width: 92%;
+    }
+
+    .close-video {
+        top: -15px;
+        right: -10px;
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+    }
+}
 
 .magic-section {
     min-height: 100vh;

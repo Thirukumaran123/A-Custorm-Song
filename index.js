@@ -1,3 +1,43 @@
+const videoButtons = document.querySelectorAll(".video-play-btn");
+const videoModal = document.getElementById("video-modal");
+const loveVideo = document.getElementById("love-video");
+const videoSource = document.getElementById("video-source");
+const closeVideo = document.getElementById("close-video");
+
+videoButtons.forEach(button => {
+    button.addEventListener("click", () => {
+
+        const videoPath = button.getAttribute("data-video");
+
+        videoSource.src = videoPath;
+        loveVideo.load();
+
+        videoModal.classList.add("show");
+
+        loveVideo.play();
+    });
+});
+
+closeVideo.addEventListener("click", () => {
+
+    videoModal.classList.remove("show");
+
+    loveVideo.pause();
+    loveVideo.currentTime = 0;
+    videoSource.src = "";
+});
+
+videoModal.addEventListener("click", event => {
+
+    if (event.target === videoModal) {
+
+        videoModal.classList.remove("show");
+
+        loveVideo.pause();
+        loveVideo.currentTime = 0;
+        videoSource.src = "";
+    }
+});
 const musicCards = document.querySelectorAll(".music-card");
 
 musicCards.forEach(card => {
